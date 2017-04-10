@@ -40,7 +40,7 @@ class AppForm(QtWidgets.QMainWindow):
         msg = """ A demo of using PyQt with matplotlib:
 
         * Use the matplotlib navigation bar
-        * Add valuesto the text box and press Enter (or click "Draw"
+        * Add values to the text box and press Enter (or click "Draw")
         * Show or hide the grid
         * Drag the slider to modify the width of the bars
         * Save the plot to a file using the File menu
@@ -56,7 +56,6 @@ class AppForm(QtWidgets.QMainWindow):
         # It carries lots of information, of which we're using
         # only a small amount here.
         #
-        # box_points = event.artist.get_bbox().get_points()
         x, y = event.artist.get_xdata(), event.artist.get_ydata()
         ind = event.ind
         plot_point = x[ind[0]], y[ind[0]]
@@ -80,13 +79,6 @@ class AppForm(QtWidgets.QMainWindow):
         self.axes.grid(self.grid_cb.isChecked())
 
         self.axes.plot(x, y, 'rx')
-        # self.axes.bar(
-        #     left=x,
-        #     height=self.data,
-        #     width=self.slider.value() / 100.0,
-        #     align='center',
-        #     alpha=0.44,
-        #     picker=5)
         self.axes.set_xlim(-0.5 * self.width, 0.5 * self.width)
         self.axes.set_xlabel('Position across wire (m)')
         self.axes.set_ylabel(r"$B_{in\hspace{0.2} plane}$ (mT)")
@@ -100,7 +92,7 @@ class AppForm(QtWidgets.QMainWindow):
         self.main_frame.setMinimumHeight(500)
 
         # Create the mpl Figure and FigCanvas objects.
-        # 5x4 inches, 100 dots per inch
+        # in inches, 100 dots per inch
         #
         self.dpi = 100
         self.fig = Figure((7.6, 7.0), dpi=self.dpi, tight_layout=True)
@@ -149,15 +141,6 @@ class AppForm(QtWidgets.QMainWindow):
         self.grid_cb = QtWidgets.QCheckBox("Show &Grid")
         self.grid_cb.setChecked(True)
         self.grid_cb.stateChanged.connect(self.on_draw)
-
-        # slider_label = QtWidgets.QLabel('Bar width (%):')
-        # self.slider = QtWidgets.QSlider(QtCore.Qt.Horizontal)
-        # self.slider.setRange(1, 100)
-        # self.slider.setValue(20)
-        # self.slider.setTracking(True)
-        # self.slider.setTickPosition(QtWidgets.QSlider.TicksBothSides)
-        # self.connect(self.slider, QtWidgets.PYQT_SIGNAL('valueChanged(int)'), self.on_draw)
-        # self.slider.valueChanged.connect(self.on_draw)
 
         blank_label = QtWidgets.QLabel('')
         blank_label.setMinimumWidth(100)
@@ -255,4 +238,3 @@ def calc_field(x_pos, z_pos, width, height, current):
 
 if __name__ == "__main__":
     main()
-    # quit()
