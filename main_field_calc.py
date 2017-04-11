@@ -37,14 +37,14 @@ class AppForm(QtWidgets.QMainWindow):
             self.statusBar().showMessage('Saved to %s' % path, 2000)
 
     def on_about(self):
-        msg = """ A demo of using PyQt with matplotlib:
+        msg = """ Oersted field calculation program:
 
-        * Use the matplotlib navigation bar
-        * Add values to the text box and press Enter (or click "Draw")
+        * Use the text boxes to specify the current, z position
+        * Use the text boxes to specify the  dimensions of Au wire
+        * Press Enter after editing (or click "Draw")
+        * Use the navigation bar to zoom/pan or customize the plot
         * Show or hide the grid
-        * Drag the slider to modify the width of the bars
         * Save the plot to a file using the File menu
-        * Click on a bar to receive an information message
         """
 
         QtWidgets.QMessageBox.about(self, "About the program", msg.strip())
@@ -90,6 +90,7 @@ class AppForm(QtWidgets.QMainWindow):
     def create_main_frame(self):
         self.main_frame = QtWidgets.QWidget()
         self.main_frame.setMinimumHeight(500)
+        self.main_frame.setMinimumWidth(500)
 
         # Create the mpl Figure and FigCanvas objects.
         # in inches, 100 dots per inch
